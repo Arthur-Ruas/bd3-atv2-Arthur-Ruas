@@ -21,3 +21,13 @@ select * from listagem_disciplinas_turmas;
 
 
 /*-10-) View geral de todas as tabelas-*/
+create view listagem_completa as
+select
+ta.nome as aluno, ta.telefone_aluno, telefone_responsavel, ta.email,
+tt.sigla, tt.nome as turma,
+td.sigla as disciplina
+from tbl_alunos as ta
+inner join tbl_turmas as tt on tt.cod_turma = ta.cod_turma
+inner join tbl_disciplinas as td on td.cod_turma = ta.cod_turma;
+
+select * from listagem_completa;
